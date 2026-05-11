@@ -9,7 +9,7 @@ CREATE TABLE cliente(
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(254) UNIQUE,
     stats BOOLEAN DEFAULT TRUE NOT NULL,
-    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
+    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB;
 
 SHOW TABLES;
@@ -28,7 +28,7 @@ CREATE TABLE produto(
     nome varchar(100) NOT NULL,
 	preco DECIMAL(10,2) NOT NULL CHECK (preco > 0),
     qtd_estoque INT NOT NULL DEFAULT 0,
-    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_categoria int NOT NULL,
     CONSTRAINT fk_produto_categoria
 		FOREIGN KEY (id_categoria)
@@ -86,7 +86,7 @@ o que compromete a confiabilidade dos dados.
 CREATE TABLE pedido(
 	id_pedido INT PRIMARY KEY AUTO_INCREMENT,
 	id_cliente INT NOT NULL,
-    data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_pedido DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     valor_pedido DECIMAL(10,2) NOT NULL CHECK (valor_pedido > 0),
 	CONSTRAINT fk_pedido_cliente
 		FOREIGN KEY (id_cliente)
@@ -116,7 +116,7 @@ CREATE TABLE pedido_item (
 
 INSERT INTO cliente (nome, email)
 VALUES 
-('Gabriel', 'gabrieldcarmo1@gmail.com'),
+('Tamashiro', 'guitama@gmail.com'),
 ('Anna', 'annabxs1@gmail.com'),
 ('Enildo', 'enildocandido@gmail.com');
 DELIMITER $$
@@ -145,7 +145,7 @@ SELECT * FROM pedido WHERE id_cliente = 1;
 /*Os pedidos do cliente foram apagados graças ao metodo ON DELETE CASCADE.*/
 
 ALTER TABLE pedido
-ADD desconto DECIMAL(5,2);
+ADD desconto DECIMAL(5,2) NOT NULL;
 
 ALTER TABLE pedido
 ADD CONSTRAINT chk_desconto
