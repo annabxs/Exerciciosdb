@@ -9,7 +9,7 @@ CREATE TABLE cliente(
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(254) UNIQUE,
     stats BOOLEAN DEFAULT TRUE NOT NULL,
-    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
 )ENGINE=InnoDB;
 
 SHOW TABLES;
@@ -116,7 +116,7 @@ CREATE TABLE pedido_item (
 
 INSERT INTO cliente (nome, email)
 VALUES 
-('Tamashiro', 'guitama@gmail.com'),
+('Gabriel', 'gabrieldcarmo1@gmail.com'),
 ('Anna', 'annabxs1@gmail.com'),
 ('Enildo', 'enildocandido@gmail.com');
 DELIMITER $$
@@ -163,5 +163,3 @@ Dessa forma, ao excluir um pedido, todos os seus itens são automaticamente remo
 
 
 
-
-/*CHECAR NULL E NOT NULL EM TODAS AS TABELAS*/
